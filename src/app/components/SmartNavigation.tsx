@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ksaLogoBase64 } from './ksaLogo';
 import { Link } from 'react-router-dom';
 import { Menu, X, BookOpen, AlertCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
@@ -20,31 +21,24 @@ export function SmartNavigation() {
 
   const navItems: NavItem[] = [
     {
-      name: 'HOME',
-      submenu: [
-        { label: '갤러리 (Gallery)', href: '#gallery' },
-        { label: '학교소개 (About ISU)', href: '#about-isu' },
-      ],
-    },
-    {
       name: 'About Us',
       submenu: [
         { label: '학생회 소개 (About KSA)', href: '#about-ksa' },
+        { label: '학교소개 (About ISU)', href: '#about-isu' },
+        { label: '갤러리 (Gallery)', href: '#gallery' },
       ],
     },
     {
       name: 'Info',
       submenu: [
-        { label: '공지사항 (Announcements)', href: '#announcements' },
-        { label: '캘린더 (Calendar)', href: '#calendar' },
+        { label: '공지사항', href: '#announcements' },
+        { label: '캘린더', href: '#calendar' },
       ],
     },
     {
       name: '게시판',
       submenu: [
-        { label: '취업 (Jobs)', href: '#jobs' },
-        { label: '중고 (Marketplace)', href: '#marketplace' },
-        { label: '소식 (News)', href: '#news' },
+        { label: '취업공고 및 중고장터', href: '#jobs' },
       ],
     },
   ];
@@ -56,8 +50,8 @@ export function SmartNavigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-white text-lg font-bold">KSA</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center">
+                <img src={ksaLogoBase64} alt="KSA Logo" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:block">
                 <div className="text-base font-bold text-foreground">ISU KSA</div>
@@ -81,7 +75,8 @@ export function SmartNavigation() {
                 </button>
                 
                 {item.submenu && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-border rounded-md shadow-lg py-2 z-50">
+                  <div className="absolute top-full left-0 w-56 pt-1 z-50">
+                  <div className="bg-white border border-border rounded-md shadow-lg py-2">
                     {item.submenu.map((subItem) => (
                       <a
                         key={subItem.label}
@@ -92,12 +87,13 @@ export function SmartNavigation() {
                       </a>
                     ))}
                   </div>
+                  </div>
                 )}
               </div>
             ))}
             
             {/* Guidebook - Highlighted */}
-            <Link to="/getting-here">
+            <Link to="/documentation">
               <button className="px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center gap-1.5 font-medium rounded-md">
                 <BookOpen className="w-4 h-4" />
                 Guidebook
@@ -105,15 +101,17 @@ export function SmartNavigation() {
             </Link>
             
             {/* Log In */}
-            <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium">
+            {/* <button className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium">
               Log In
-            </button>
+            </button> */}
             
-            {/* Emergency - Highlighted */}
-            <button className="px-4 py-2 bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors flex items-center gap-1.5 font-medium rounded-md">
-              <AlertCircle className="w-4 h-4" />
-              Emergency
-            </button>
+            {/* Emergency Contact - Highlighted */}
+            <Link to="/emergency">
+              <button className="px-4 py-2 bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors flex items-center gap-1.5 font-bold rounded-md">
+                <AlertCircle className="w-4 h-4" />
+                Emergency Contact
+              </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation - Right */}
@@ -160,7 +158,7 @@ export function SmartNavigation() {
               </div>
             ))}
             <div className="space-y-2 pt-4 border-t border-border">
-              <Link to="/getting-here" onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/documentation" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-white gap-2">
                   <BookOpen className="w-4 h-4" />
                   Guidebook
@@ -169,10 +167,12 @@ export function SmartNavigation() {
               <button className="w-full text-center py-2 text-muted-foreground hover:text-foreground">
                 Log In
               </button>
-              <Button className="w-full bg-destructive hover:bg-destructive/90 text-white gap-2">
-                <AlertCircle className="w-4 h-4" />
-                Emergency
-              </Button>
+              <Link to="/emergency" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full bg-destructive hover:bg-destructive/90 text-white gap-2 font-bold">
+                  <AlertCircle className="w-4 h-4" />
+                  Emergency Contact
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

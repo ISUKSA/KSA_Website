@@ -1,4 +1,4 @@
-import { Phone, Wifi, DollarSign, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
+import { Phone, Wifi, DollarSign, MapPin, AlertCircle, CheckCircle, ExternalLink, Signal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function MobilePlansPage() {
@@ -183,7 +183,32 @@ export function MobilePlansPage() {
         </div>
       </section>
 
-      {/* The Easy Option - ISSO Partnership */}
+      {/* NEW INTRO BLOCK: 통신사 선택 가이드 */}
+      <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-blue-100 to-indigo-100 border-2 border-blue-400 rounded-lg p-8 shadow-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <Signal className="w-10 h-10 text-blue-600" />
+              <h2 className="text-3xl font-bold text-foreground">통신사 선택 가이드</h2>
+            </div>
+            <p className="text-lg text-muted-foreground mb-4">Choosing a Carrier</p>
+
+            <p className="text-base text-foreground leading-relaxed mb-6">
+              각 통신사별로 제공하는 혜택과 이벤트가 다르기에 직접 비교조사를 통해 개인의 상황과 성향에 맞춰 선택하는 것을 추천합니다.
+            </p>
+
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-800 font-semibold hover:underline"
+            >
+              <span>더욱 자세한 통신사별 비교분석은 링크 참고</span>
+              <ExternalLink className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: 대형 & 중형 통신사 (Major & Regional Carriers) */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
@@ -191,276 +216,186 @@ export function MobilePlansPage() {
               <Phone className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold">Budget Options</h2>
-              <p className="text-muted-foreground">Best Value for Students · 학생들을 위한 최고의 가치</p>
+              <h2 className="text-3xl font-bold">대형 & 중형 통신사</h2>
+              <p className="text-muted-foreground">Major & Regional Carriers</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Mint Mobile */}
-            <div className="bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary rounded-lg p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm font-semibold">RECOMMENDED</span>
-                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-semibold">FREE SIM</span>
-              </div>
-              
-              <h3 className="text-2xl font-bold mb-3">Mint Mobile / CampusSIMS</h3>
-              <p className="text-muted-foreground mb-6">민트 모바일 / 캠퍼스심</p>
-
-              <div className="grid gap-6 mb-6">
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    Why This Option?
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-3">왜 이 옵션을 선택해야 할까요?</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Card 1: Verizon */}
+            <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-red-300 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">V</span>
                 </div>
-
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-primary" />
-                    Cost & Requirements
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-3">비용 및 요구사항</p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><span className="font-semibold">Cost:</span> Budget-friendly (approx. $15/month)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><span className="font-semibold">No contract</span> required</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span><span className="font-semibold">No SSN required</span> (perfect for new arrivals)</span>
-                    </li>
-                  </ul>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground">Verizon</h3>
               </div>
 
-              <div className="bg-white rounded-lg p-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  Where to Get It
-                </h4>
-                <div className="space-y-2 text-sm">
-                  <p><span className="font-semibold">Location:</span> ISSO Office, Morrill Hall, Room 3720</p>
-                  <p><span className="font-semibold">Hours:</span> Monday-Friday, 8:00 AM - 5:00 PM</p>
-                  <p><span className="font-semibold">Address:</span> 3720 Morrill Hall, 515 Morrill Rd, Ames, IA 50011</p>
-                  <p className="text-muted-foreground mt-2">
-                    📍 Morrill Hall은 캠퍼스 중앙에 위치해 있으며 도보로 쉽게 찾을 수 있습니다.
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  가장 넓은 coverage(서비스 지역 범위)와 안정적인 통신 품질
+                </p>
+                <div className="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
+                  <p className="text-sm font-semibold text-foreground">
+                    가격대: 무제한 기준 월 $70~$90+로 제일 비쌈
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Visible */}
-            <div className="bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-400 rounded-lg p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 bg-red-600 text-white rounded-full text-sm font-semibold">BEST COVERAGE</span>
-              </div>
-              
-              <h3 className="text-2xl font-bold mb-3">Visible (by Verizon)</h3>
-              <p className="text-muted-foreground mb-6">비저블 (베라이즌 네트워크)</p>
-
-              <div className="grid gap-6 mb-6">
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-red-600" />
-                    Why Visible?
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-3">왜 비저블인가?</p>
-                  <p className="text-sm leading-relaxed">
-                    Best coverage in Ames (uses <span className="font-semibold text-red-600">Verizon network</span>) but cheaper than Verizon directly. <span className="font-semibold">$25/month</span> for unlimited data and hotspot included.
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                    Ames에서 최고의 통신 품질(베라이즌 네트워크 사용)이지만 베라이즌보다 저렴합니다. 무제한 데이터와 핫스팟 포함.
-                  </p>
+            {/* Card 2: AT&T */}
+            <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-300 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">AT&T</span>
                 </div>
-
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-red-600" />
-                    Cost & Features
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-3">비용 및 기능</p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600">•</span>
-                      <span><span className="font-semibold">$25/month</span> unlimited everything</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600">•</span>
-                      <span><span className="font-semibold">Unlimited mobile hotspot</span> included</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600">•</span>
-                      <span><span className="font-semibold">No contract</span> - cancel anytime</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600">•</span>
-                      <span><span className="font-semibold">Online only</span> - download app to activate</span>
-                    </li>
-                  </ul>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground">AT&T</h3>
               </div>
 
-              <div className="bg-white rounded-lg p-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-red-600" />
-                  How to Get It
-                </h4>
-                <div className="space-y-2 text-sm">
-                  <p><span className="font-semibold">Download:</span> Visible app (iOS or Android)</p>
-                  <p><span className="font-semibold">Activation:</span> eSIM - instant activation (no waiting)</p>
-                  <p><span className="font-semibold">Website:</span> <a href="https://www.visible.com" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">visible.com</a></p>
-                  <div className="bg-blue-50 border border-blue-200 rounded p-3 mt-3">
-                    <p className="text-xs text-blue-800">
-                      <CheckCircle className="w-3 h-3 inline mr-1" />
-                      <span className="font-semibold">Note:</span> Online only - download the app to activate eSIM instantly. Perfect for immediate use upon arrival!
-                    </p>
-                  </div>
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Verizon에 준하는 coverage, 전반적으로 무난한 성능
+                </p>
+                <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                  <p className="text-sm font-semibold text-foreground">
+                    가격대: 무제한 기준 약 $65~$85
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-8 bg-accent rounded-lg p-6">
-            <h4 className="font-semibold mb-3 flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-primary" />
-              Where to Buy Physical SIMs
-            </h4>
-            <p className="text-sm mb-3">
-              You can buy physical SIM cards at <span className="font-semibold">Walmart</span> or <span className="font-semibold">Target (Campustown)</span> while shopping for essentials. You don't need to go all the way to North Grand Mall.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4 text-sm">
-              <div className="bg-white rounded-lg p-4">
-                <p className="font-medium mb-1">Walmart Supercenter</p>
-                <p className="text-muted-foreground">534 S Duff Ave - Take CyRide #1 Red</p>
+            {/* Card 3: T-Mobile */}
+            <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-pink-300 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-14 h-14 bg-pink-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">T</span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">T-Mobile</h3>
               </div>
-              <div className="bg-white rounded-lg p-4">
-                <p className="font-medium mb-1">Target (Campustown)</p>
-                <p className="text-muted-foreground">320 S 16th St - Walking distance from campus</p>
+
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  에임스에서는 안정적으로 연결되지만 그 외 지역은 편차 큼
+                </p>
+                <div className="bg-pink-50 rounded-lg p-4 border-l-4 border-pink-500">
+                  <p className="text-sm font-semibold text-foreground">
+                    가격대: 무제한 기준 월 $60~$85
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4: UScellular */}
+            <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-purple-300 hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">US</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">UScellular</h3>
+                  <span className="text-xs text-purple-600 font-semibold">중형 통신사</span>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  대형 통신사가 아닌 지역 기반 통신사로, 특히 중서부(Iowa 등) 지역에서 강한 coverage를 제공
+                </p>
+                <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+                  <p className="text-sm font-semibold text-foreground">
+                    가격대: 무제한 기준 월 $60 ~ $80
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Big Carriers */}
+      {/* NEW SECTION: 알뜰폰 (MVNO - Budget Options) */}
       <section className="py-16 bg-gradient-to-b from-accent/30 to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-              <Phone className="w-6 h-6 text-secondary-foreground" />
+            <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+              <DollarSign className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold">The Big Carriers</h2>
-              <p className="text-muted-foreground">Unlimited Data Plans · 무제한 데이터 요금제</p>
+              <h2 className="text-3xl font-bold">알뜰폰</h2>
+              <p className="text-muted-foreground">MVNO - Budget Options</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h3 className="text-2xl font-bold mb-4">Verizon / T-Mobile / AT&T</h3>
-            <p className="text-muted-foreground mb-6">미국 3대 이동통신사</p>
-
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-accent/30 rounded-lg p-6">
-                <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-white font-bold">V</span>
-                </div>
-                <h4 className="font-semibold mb-2">Verizon</h4>
-                <p className="text-sm text-muted-foreground mb-3">베라이즌</p>
-                <p className="text-sm">Best overall coverage in rural Iowa. Premium pricing but most reliable.</p>
+          {/* Warning Note */}
+          <div className="bg-amber-50 border-2 border-amber-400 rounded-lg p-6 mb-8 shadow-md">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-base font-semibold text-amber-900 mb-2">주의사항:</p>
+                <p className="text-sm text-amber-800 leading-relaxed">
+                  알뜰폰은 어떠한 망을 사용하는지에 따라 연결 성능 차이가 생깁니다. 또한 사용자가 많은 경우 임의로 연결 성능에 제한을 둬 불편함을 겪을 수 있음에 유의하세요.
+                </p>
               </div>
+            </div>
+          </div>
 
-              <div className="bg-accent/30 rounded-lg p-6">
-                <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-white font-bold">T</span>
+          {/* MVNO Options - Horizontal Rows */}
+          <div className="space-y-4">
+            {/* Row 1: Mint Mobile */}
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">M</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-foreground">Mint Mobile</h4>
+                    <p className="text-sm text-muted-foreground">T-mobile 망 | 무제한 기준 월 $15~$30 <span className="text-green-600 font-semibold">(최저가)</span></p>
+                  </div>
                 </div>
-                <h4 className="font-semibold mb-2">T-Mobile</h4>
-                <p className="text-sm text-muted-foreground mb-3">티모바일</p>
-                <p className="text-sm">Good in-town coverage. Often has special international student promotions.</p>
-              </div>
-
-              <div className="bg-accent/30 rounded-lg p-6">
-                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-white font-bold">AT&T</span>
-                </div>
-                <h4 className="font-semibold mb-2">AT&T</h4>
-                <p className="text-sm text-muted-foreground mb-3">AT&T</p>
-                <p className="text-sm">Good balance of coverage and price. Family plan discounts available.</p>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-green-800">
-                  <CheckCircle className="w-5 h-5" />
-                  Pros
-                </h4>
-                <p className="text-sm text-muted-foreground mb-3">장점</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600">✓</span>
-                    <span><span className="font-semibold">Better coverage</span> in rural Iowa areas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600">✓</span>
-                    <span><span className="font-semibold">Family plan discounts</span> if you group with friends</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600">✓</span>
-                    <span><span className="font-semibold">Unlimited data</span> plans available</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600">✓</span>
-                    <span><span className="font-semibold">More physical stores</span> for support</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-orange-800">
-                  <AlertCircle className="w-5 h-5" />
-                  Important Notes
-                </h4>
-                <p className="text-sm text-muted-foreground mb-3">유의사항</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600">!</span>
-                    <span>May require a <span className="font-semibold">deposit</span> if you don't have US credit history yet</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600">!</span>
-                    <span><span className="font-semibold">Higher monthly cost</span> ($50-80/month)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600">!</span>
-                    <span>Some plans require <span className="font-semibold">contracts</span></span>
-                  </li>
-                </ul>
+            {/* Row 2: Visible */}
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-500 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">V</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-foreground">Visible</h4>
+                    <p className="text-sm text-muted-foreground">Verizon 망 | 무제한 기준 월 $25~$45</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-accent rounded-lg p-6">
-              <h4 className="font-semibold mb-3 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-primary" />
-                Location: North Grand Mall
-              </h4>
-              <div className="grid sm:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="font-medium mb-1">Address:</p>
-                  <p className="text-muted-foreground">2801 Grand Ave, Ames, IA 50010</p>
+            {/* Row 3: US Mobile */}
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">US</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-foreground">US Mobile</h4>
+                    <p className="text-sm text-muted-foreground">Verizon / T-Mobile / AT&T 망 선택 가능 | 무제한 기준 월 $25~$50</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-medium mb-1">How to Get There:</p>
-                  <p className="text-muted-foreground">Take CyRide #1 Red (North)</p>
-                </div>
-                <div className="sm:col-span-2">
-                  <p className="font-medium mb-1">Stores Available:</p>
-                  <p className="text-muted-foreground">Verizon, T-Mobile, and AT&T all have retail locations in the mall</p>
+              </div>
+            </div>
+
+            {/* Row 4: Google Fi Wireless */}
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">Fi</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-foreground">Google Fi Wireless</h4>
+                    <p className="text-sm text-muted-foreground">T-Mobile 망 | 무제한 기준 월 $50~$65</p>
+                  </div>
                 </div>
               </div>
             </div>

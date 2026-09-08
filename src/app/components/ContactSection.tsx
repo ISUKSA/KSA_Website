@@ -1,6 +1,12 @@
-import { Mail, Instagram, Facebook, MapPin, Phone } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
-import { Card, CardContent } from '@/app/components/ui/card';
+import {
+  Mail,
+  Instagram,
+  Facebook,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import { Card, CardContent } from "@/app/components/ui/card";
 
 export function ContactSection() {
   return (
@@ -21,7 +27,9 @@ export function ContactSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
                 <Mail className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
+              <h3 className="font-semibold text-foreground mb-2">
+                Email Us
+              </h3>
               <a
                 href="mailto:ksa@iastate.edu"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -36,9 +44,12 @@ export function ContactSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Visit Us</h3>
+              <h3 className="font-semibold text-foreground mb-2">
+                Visit Us
+              </h3>
               <p className="text-sm text-muted-foreground">
-                Memorial Union, Room 3536<br />
+                Memorial Union, Room 3536
+                <br />
                 Iowa State University
               </p>
             </CardContent>
@@ -49,7 +60,9 @@ export function ContactSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
+              <h3 className="font-semibold text-foreground mb-2">
+                Call Us
+              </h3>
               <a
                 href="tel:+15152941234"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -66,19 +79,26 @@ export function ContactSection() {
               <h3 className="text-xl font-semibold text-foreground mb-6 text-center">
                 Join Our Community
               </h3>
-              
+
               <div className="space-y-4">
                 <a
-                  href="https://www.instagram.com/isuksa"
+                  href="https://www.instagram.com/isuksa_/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Button variant="outline" className="w-full justify-start gap-3 h-auto py-4">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-3 h-auto py-4"
+                  >
                     <Instagram className="w-5 h-5 text-pink-600" />
                     <div className="text-left">
-                      <div className="font-medium">Follow us on Instagram</div>
-                      <div className="text-sm text-muted-foreground">@isuksa</div>
+                      <div className="font-medium">
+                        Follow us on Instagram
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        @isuksa
+                      </div>
                     </div>
                   </Button>
                 </a>
@@ -89,11 +109,18 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Button variant="outline" className="w-full justify-start gap-3 h-auto py-4">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-3 h-auto py-4"
+                  >
                     <Facebook className="w-5 h-5 text-blue-600" />
                     <div className="text-left">
-                      <div className="font-medium">Join our Facebook Group</div>
-                      <div className="text-sm text-muted-foreground">ISU Korean Student Association</div>
+                      <div className="font-medium">
+                        Join our Facebook Group
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        ISU Korean Student Association
+                      </div>
                     </div>
                   </Button>
                 </a>
@@ -102,11 +129,18 @@ export function ContactSection() {
                   href="mailto:ksa@iastate.edu?subject=Membership Inquiry"
                   className="block"
                 >
-                  <Button variant="outline" className="w-full justify-start gap-3 h-auto py-4">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-3 h-auto py-4"
+                  >
                     <Mail className="w-5 h-5 text-primary" />
                     <div className="text-left">
-                      <div className="font-medium">Email for Membership</div>
-                      <div className="text-sm text-muted-foreground">ksa@iastate.edu</div>
+                      <div className="font-medium">
+                        Email for Membership
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        ksa@iastate.edu
+                      </div>
                     </div>
                   </Button>
                 </a>

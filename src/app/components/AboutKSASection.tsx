@@ -1,5 +1,15 @@
-import { Users, Globe, Heart, Award, MapPin, Mail } from 'lucide-react';
+import { Users, Globe, Heart, Award, MapPin, Mail, UserCircle2 } from 'lucide-react';
 import { Card, CardContent } from '@/app/components/ui/card';
+
+const boardMembers = [
+  { name: 'Member Name', role: 'President', roleKo: '회장' },
+  { name: 'Member Name', role: 'Vice President', roleKo: '부회장' },
+  { name: 'Member Name', role: 'Secretary', roleKo: '총무' },
+  { name: 'Member Name', role: 'Treasurer', roleKo: '재무' },
+  { name: 'Member Name', role: 'Public Relations', roleKo: '홍보' },
+  { name: 'Member Name', role: 'Event Coordinator', roleKo: '행사' },
+  { name: 'Member Name', role: 'Social Media', roleKo: '소셜미디어' },
+];
 
 const features = [
   {
@@ -31,7 +41,7 @@ const features = [
 export function AboutKSASection() {
   return (
     <section id="about-ksa" className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-[32px] py-[30px] mx-[128px] my-[30px]">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             About KSA
@@ -46,93 +56,48 @@ export function AboutKSASection() {
           </p>
         </div>
 
+        {/* Board Members */}
+        <div className="mb-14">
+          <h3 className="text-center text-xl font-bold text-foreground mb-1">Board Members</h3>
+          <p className="text-center text-sm text-muted-foreground mb-8">임원진</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+            {boardMembers.map((member, index) => (
+              <div key={index} className="flex flex-col items-center gap-3 text-center">
+                <div className="w-40 h-40 rounded-2xl bg-muted flex items-center justify-center overflow-hidden border-2 border-border">
+                  <UserCircle2 className="w-24 h-24 text-muted-foreground/40" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{member.name}</p>
+                  <p className="text-xs text-primary font-medium">{member.role}</p>
+                  <p className="text-xs text-muted-foreground">{member.roleKo}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {feature.titleKo}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+              null
             );
           })}
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          <div className="text-center p-6 bg-primary/5 rounded-lg">
-            <div className="text-4xl font-bold text-primary mb-2">150+</div>
-            <div className="text-sm text-muted-foreground">Active Members</div>
-          </div>
-          <div className="text-center p-6 bg-secondary/10 rounded-lg">
-            <div className="text-4xl font-bold text-secondary-foreground mb-2">20+</div>
-            <div className="text-sm text-muted-foreground">Events Per Year</div>
-          </div>
-          <div className="text-center p-6 bg-primary/5 rounded-lg">
-            <div className="text-4xl font-bold text-primary mb-2">10</div>
-            <div className="text-sm text-muted-foreground">Years Strong</div>
-          </div>
-          <div className="text-center p-6 bg-secondary/10 rounded-lg">
-            <div className="text-4xl font-bold text-secondary-foreground mb-2">100%</div>
-            <div className="text-sm text-muted-foreground">Student Led</div>
-          </div>
+          
+          
+          
+          
         </div>
 
         {/* Contact Info */}
-        <div className="bg-muted/50 rounded-lg p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-primary" />
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Visit Us</h4>
-                <p className="text-sm text-muted-foreground">
-                  Memorial Union, Room 3536<br />
-                  Iowa State University<br />
-                  Ames, IA 50011
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Contact Us</h4>
-                <p className="text-sm text-muted-foreground mb-1">
-                  Email:{' '}
-                  <a href="mailto:ksa@iastate.edu" className="text-primary hover:underline">
-                    ksa@iastate.edu
-                  </a>
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  We typically respond within 1-2 business days
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         {/* About ISU Section */}
-        <div id="about-isu" className="mt-16 pt-16 border-t border-border">
+        <div id="about-isu" className="border-t border-border mx-[0px] mt-[75px] mb-[0px] px-[0px] pt-[80px] pb-[0px]">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-foreground mb-2">
               About Iowa State University

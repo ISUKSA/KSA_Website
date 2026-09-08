@@ -50,7 +50,7 @@ export function OrganizationNav() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link to="/getting-here">
+            <Link to="/documentation">
               <Button className="bg-primary hover:bg-primary/90 text-white gap-2">
                 <BookOpen className="w-4 h-4" />
                 New Student Guidebook
@@ -87,7 +87,7 @@ export function OrganizationNav() {
               </a>
             ))}
             <Link
-              to="/getting-here"
+              to="/documentation"
               className="block mt-4"
               onClick={() => setMobileMenuOpen(false)}
             >

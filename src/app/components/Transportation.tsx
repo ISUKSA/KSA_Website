@@ -1,13 +1,20 @@
-import { Bus, MapPin, Clock, DollarSign } from 'lucide-react';
+import { Bus, MapPin, Clock, DollarSign, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useState } from 'react';
 
 export function Transportation() {
+  const [zoom, setZoom] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
   const routes = [
-    { number: '1 Red', name: 'Main Campus Loop', nameKr: '메인 캠퍼스 순환' },
-    { number: '2 Blue', name: 'South Campus Route', nameKr: '남부 캠퍼스 노선' },
-    { number: '3 Orange', name: 'Towers & Apartments', nameKr: '타워 및 아파트' },
-    { number: '6 Brown', name: 'West Ames', nameKr: '웨스트 에임스' },
-    { number: '11 Cardinal', name: 'Shopping & Services', nameKr: '쇼핑 및 서비스' },
-    { number: '23 Gold', name: 'ISU Research Park', nameKr: 'ISU 연구 단지' },
+    { number: '1 Red', name: 'Central Campus [East ↔ West]', nameKr: '중앙 캠퍼스 [동부 ↔ 서부]', color: '#DC2626' },
+    { number: '2 Green', name: 'Northen Campus [East ↔ West]', nameKr: '북부 캠퍼스 [동부 ↔ 서부]', color: '#00853E' },
+    { number: '3 Blue', name: 'Shopping & Services', nameKr: '쇼핑 및 서비스', color: '#2563EB' },
+    { number: '6 Brown', name: 'Campus [North ↔ South]', nameKr: '캠퍼스 [남부 ↔ 북부]', color: '#92400E' },
+    { number: '21 Cardinal', name: 'Main Campus Loop', nameKr: '메인 캠퍼스 순환', color: '#C8102E' },
+    { number: '23 Orange', name: 'Main Campus ↔ Stadium', nameKr: '메인 캠퍼스 ↔ 스타디움', color: '#EA580C' },
   ];
 
   return (
@@ -73,11 +80,14 @@ export function Transportation() {
             {routes.map((route, index) => (
               <div key={index} className="border border-border rounded-lg p-4 hover:border-primary transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${route.color}20` }}
+                  >
+                    <Bus className="w-5 h-5" style={{ color: route.color }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-primary">{route.number}</p>
+                    <p className="font-semibold" style={{ color: route.color }}>{route.number}</p>
                     <p className="text-sm">{route.name}</p>
                     <p className="text-xs text-muted-foreground">{route.nameKr}</p>
                   </div>
@@ -87,20 +97,104 @@ export function Transportation() {
           </div>
 
           {/* Map Placeholder */}
-          <div className="mt-8 bg-muted rounded-lg p-8 text-center">
-            <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h4 className="font-semibold mb-2">CyRide Route Map</h4>
-            <p className="text-sm text-muted-foreground mb-4">
-              Interactive route map will be displayed here
-            </p>
-            <a
-              href="https://www.cyride.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          <div className="mt-8 bg-muted rounded-lg overflow-hidden">
+            <div className="bg-background border-b border-border p-4 flex items-center justify-between">
+              <div>
+                <h4 className="font-semibold">CyRide Route Map</h4>
+                <p className="text-sm text-muted-foreground">
+                  Zoom and drag to explore the map
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setZoom(Math.min(zoom + 0.25, 3))}
+                  disabled={zoom >= 3}
+                  className="p-2 rounded-lg border border-border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  title="Zoom In"
+                >
+                  <ZoomIn className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setZoom(Math.max(zoom - 0.25, 0.5))}
+                  disabled={zoom <= 0.5}
+                  className="p-2 rounded-lg border border-border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  title="Zoom Out"
+                >
+                  <ZoomOut className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => {
+                    setZoom(1);
+                    setPosition({ x: 0, y: 0 });
+                  }}
+                  className="p-2 rounded-lg border border-border hover:bg-accent transition-colors"
+                  title="Reset Zoom"
+                >
+                  <RotateCcw className="w-5 h-5" />
+                </button>
+                <div className="ml-2 px-3 py-1 bg-accent rounded text-sm font-medium">
+                  {Math.round(zoom * 100)}%
+                </div>
+              </div>
+            </div>
+            <div 
+              className="relative overflow-auto bg-muted"
+              style={{ 
+                height: '500px',
+                cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
+              }}
+              onMouseDown={(e) => {
+                if (zoom > 1) {
+                  setIsDragging(true);
+                  setDragStart({
+                    x: e.clientX - position.x,
+                    y: e.clientY - position.y
+                  });
+                }
+              }}
+              onMouseMove={(e) => {
+                if (isDragging && zoom > 1) {
+                  setPosition({
+                    x: e.clientX - dragStart.x,
+                    y: e.clientY - dragStart.y
+                  });
+                }
+              }}
+              onMouseUp={() => setIsDragging(false)}
+              onMouseLeave={() => setIsDragging(false)}
             >
-              View Full Map on CyRide.com
-            </a>
+              <div 
+                className="inline-block min-w-full min-h-full"
+                style={{
+                  transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
+                  transformOrigin: 'center center',
+                  transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+                }}
+              >
+                <ImageWithFallback
+                  src="https://www.cyride.com/home/showpublishedimage/2040/638847339714170000"
+                  alt="CyRide Route Map"
+                  className="w-full h-auto"
+                  style={{ 
+                    minHeight: '500px',
+                    objectFit: 'cover',
+                    userSelect: 'none',
+                    pointerEvents: 'none'
+                  }}
+                />
+              </div>
+            </div>
+            <div className="bg-background border-t border-border p-3 text-center">
+              <a
+                href="https://www.cyride.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm"
+              >
+                <MapPin className="w-4 h-4" />
+                Visit CyRide.com
+              </a>
+            </div>
           </div>
         </div>
       </div>

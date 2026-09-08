@@ -25,12 +25,9 @@ export function SmartHero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#about-ksa">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2">
-              <Users className="w-5 h-5" />
-              Join KSA
-            </Button>
+            
           </a>
-          <Link to="/getting-here">
+          <Link to="/documentation">
             <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20 gap-2">
               <BookOpen className="w-5 h-5" />
               Read the New Student Guidebook
